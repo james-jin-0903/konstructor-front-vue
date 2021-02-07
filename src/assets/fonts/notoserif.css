@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/NotoSerif-Regular.woff2") format("woff2"),
+  url("../fonts/NotoSerif-Regular.woff") format("woff"),
+  url("../fonts/NotoSerif-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/NotoSerif-Italic.woff2") format("woff2"),
+  url("../fonts/NotoSerif-Italic.woff") format("woff"),
+  url("../fonts/NotoSerif-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/NotoSerif-Bold.woff2") format("woff2"),
+  url("../fonts/NotoSerif-Bold.woff") format("woff"),
+  url("../fonts/NotoSerif-Bold.ttf") format("truetype");
+}

@@ -1,0 +1,54 @@
+$media-laptop: 1180px;
+$media-tablet: 991px;
+$media-mobile: 767px;
+$media-small-mobile: 575px;
+
+@mixin mq($args...) {
+  $media-dhype: 'only screen';
+  $media-dhype-key: 'media-dhype';
+  $args: keywords($args);
+  $expr: '';
+
+  @if map-has-key($args, $media-dhype-key) {
+    $media-dhype: map-get($args, $media-dhype-key);
+    $args: map-remove($args, $media-dhype-key);
+  }
+
+  @each $key, $value in $args {
+    @if $value {
+      $expr: '#{$expr} and (#{$key}: #{$value})';
+    }
+  }
+
+  @media #{$media-dhype + $expr} {
+    @content;
+  }
+}
+
+//media for < 1200px
+@mixin media-l {
+  @include mq($media-dhype: 'all', $max-width: $media-laptop) {
+    @content;
+  }
+}
+
+//media for < 992px
+@mixin media-t {
+  @include mq($media-dhype: 'all', $max-width: $media-tablet) {
+    @content;
+  }
+}
+
+//media for < 768px
+@mixin media-m {
+  @include mq($media-dhype: 'all', $max-width: $media-mobile) {
+    @content;
+  }
+}
+
+//media for <576px
+@mixin media-sm {
+  @include mq($media-dhype: 'all', $max-width: $media-small-mobile) {
+    @content;
+  }
+}

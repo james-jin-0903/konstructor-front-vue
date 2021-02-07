@@ -1,0 +1,4 @@
+include:
+  - project: 'system/infrastructure/konstruktor-platform-gitlab-ci'
+    ref: master
+    file: 'entrypoint/.gitlab-ci.yml'

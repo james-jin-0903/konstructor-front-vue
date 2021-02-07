@@ -1,0 +1,172 @@
+.uploaded-item {
+  display: flex;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+
+  &:hover {
+    border-color: $blue1;
+  }
+
+  &:hover &__dropdown {
+    opacity: 1;
+  }
+
+  &--block {
+    flex-direction: column;
+    width: 132px;
+
+    .uploaded-item {
+      &__main-info {
+        display: flex;
+        flex-direction: column;
+      }
+      &__cover {
+        width: 120px;
+        height: 120px;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__name {
+        margin-top: 5px;
+
+        &_editable-block {
+          padding: 5px 0;
+        }
+      }
+    }
+  }
+
+  &--list {
+    flex-direction: row;
+
+    .uploaded-item {
+      &__cover {
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        img {
+          width: auto;
+        }
+      }
+      &__icon {
+        margin-right: 10px;
+      }
+      &__main-info {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+      }
+      &__meta-info {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+      }
+      &__meta-info-item {
+        max-width: 25%;
+
+        > .title {
+          @include font(12, r, 16px);
+          color: $gray3;
+        }
+        > .info {
+          color: $gray6;
+        }
+      }
+    }
+  }
+
+  &__cover {
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-color: $gray2;
+
+    &_empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      svg {
+        width: 30px;
+        height: 42px;
+      }
+      img {
+        @include absoluteCenter();
+      }
+    }
+    &_gray {
+      filter: brightness(0.5);
+      transition: filter 0.2s ease-in-out;
+    }
+  }
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+  &__name-block {
+  }
+  &__name {
+    font-weight: 600;
+    color: $gray7;
+    flex-grow: 1;
+    border: 1px solid transparent;
+
+    &_editable {
+      border-color: $blue1;
+      border-radius: 3px;
+      padding: 5px 10px;
+      overflow: hidden;
+      overflow-wrap: normal;
+    }
+  }
+  &__main-info {
+    position: relative;
+  }
+
+  &__dropdown {
+    position: absolute;
+    right: 8px;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 10;
+
+    &_active {
+      opacity: 1;
+    }
+  }
+
+  &__preview {
+    position: absolute;
+    z-index: 4;
+    top: 35px;
+    left: 35px;
+    display: flex;
+
+    border: 1px solid $gray3;
+
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__context-menu {
+    //background: red;
+    //width: 200px;
+    //height: 400px;
+    position: absolute;
+    z-index: 9;
+  }
+  &__context-menu-icon {
+    width: 16px;
+    display: flex;
+    justify-content: center;
+  }
+}

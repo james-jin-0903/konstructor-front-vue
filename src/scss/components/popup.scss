@@ -1,0 +1,46 @@
+$popup-small: 400px;
+$popup-medium: 600px;
+$popup-large: 880px;
+
+$popup-overlay-color: rgba(7, 4, 29, 0.75);
+
+.vm_overlay {
+  background: $popup-overlay-color !important;
+}
+
+.vm_modal {
+  overflow: visible !important;
+}
+
+.popup {
+  position: relative;
+
+  &__close-btn {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    width: 22px;
+    height: 22px;
+    color: white;
+    cursor: pointer;
+  }
+
+  &__body {
+    padding: 40px;
+  }
+
+  &__title {
+    @include font(16, b, 22px);
+    color: $gray6;
+  }
+
+  &_small {
+    width: $popup-small;
+  }
+  &_medium {
+    width: $popup-medium;
+  }
+  &_large {
+    width: $popup-large;
+  }
+}

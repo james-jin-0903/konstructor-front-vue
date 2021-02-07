@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ .Values.webFrontendService.name }}-ingress"
+  namespace: {{ .Values.global.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: true
+    nginx.ingress.kubernetes.io/use-regex: true
+    kubernetes.io/ingress.class: nginx
+#    metallb.universe.tf/allow-shared-ip:
+
+#    nginx.ingress.kubernetes.io/auth-type: basic
+#    nginx.ingress.kubernetes.io/auth-secret: tmp-auth
+#    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - ok"
+#    ingress.kubernetes.io/auth-type: basic
+#    ingress.kubernetes.io/auth-secret: tmp-auth
+#    ingress.kubernetes.io/auth-realm: "Authentication Required - ok"
+
+{{ if ne .Values.global.env "production" }}
+    ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+{{ end }}
+
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.global.env_url }}
+      secretName: "{{ .Values.global.namespace }}-tls"
+  rules:
+    - host: {{ .Values.global.env_url }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: "{{ .Values.webFrontendService.name }}"
+              servicePort: {{ .Values.webFrontendService.port }}

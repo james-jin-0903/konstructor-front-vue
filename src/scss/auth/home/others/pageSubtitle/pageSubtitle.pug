@@ -1,0 +1,15 @@
+mixin _pageSubtitle(item)
+    .pageSubtitle(class= item.class
+        class= item.rightSide ? 'pageSubtitle_mirrored' : '')
+        div.pageSubtitle__desc
+            if (typeof (item.desc) === 'string')
+                span= item.desc
+            else
+                .pageSubtitle__titleFirstLine= item.desc.firstLine
+                .pageSubtitle__titleSecondLine= item.desc.secondLine
+        div.pageSubtitle__title
+            if (typeof (item.mainText) === 'string')
+                span= item.mainText
+            else
+                .pageSubtitle__titleFirstLine= item.mainText.firstLine
+                .pageSubtitle__titleSecondLine= item.mainText.secondLine

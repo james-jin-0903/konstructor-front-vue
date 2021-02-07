@@ -1,0 +1,68 @@
+.pageTitle {
+  color: $color_black;
+  display: flex;
+  flex-direction: column;
+
+  &_reverse {
+    flex-direction: column-reverse;
+  }
+
+  &_white {
+    color: $color_white;
+  }
+}
+
+.pageTitle__title {
+  max-width: 1100px;
+  margin: 10px 0;
+  @include font(1, 76, r, 1); //font semibold
+  color: inherit;
+
+  @include media-t {
+    font-size: 60px;
+  }
+
+  @include media-m {
+    font-size: 48px;
+  }
+
+  @include media-sm {
+    font-size: 29px;
+  }
+}
+
+.pageTitle__desc {
+  max-width: 450px;
+  position: relative;
+  margin: 10px 0;
+  @include font(1, 18, r, 1.5);
+  color: inherit;
+
+  @include media-sm {
+    @include font(1, 16, l, 1.5);
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 110px; //dinamic change from 0 to 110px by animation
+    height: 1px;
+    top: 13px;
+    right: calc(100% + 20px);
+    background-color: $color_white;
+
+    @include media-t {
+      widht: 12px;
+    }
+
+    @include media-sm {
+      display: none;
+    }
+  }
+
+  &::after {
+  }
+
+  //slide effect by animation
+}

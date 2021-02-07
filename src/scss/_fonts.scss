@@ -1,0 +1,113 @@
+$font_regular: 400;
+$font_bold: 700;
+$font_semibold: 600;
+$font_light: 300;
+
+$openSans: 'Open Sans', Arial, sans-serif;
+
+body {
+  color: $color_black;
+  @include font(14, r, 19px);
+}
+
+section {
+  @include spaceBotomBlock;
+}
+
+@mixin link() {
+  transition: 0.4s;
+  text-decoration: none;
+  color: #81a6c3;
+
+  &:hover {
+    text-decoration: underline;
+    color: #4a6c87;
+  }
+}
+
+.link {
+  @include link();
+
+  &_default-hover {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+h1 {
+  @include font(36, b, 54px);
+  color: $black;
+}
+
+h2,
+.h2 {
+  @include font(24, b, 38px);
+  color: $black;
+}
+
+h3,
+.h3 {
+  @include font(20, b, 32px);
+  color: $gray6;
+}
+
+h4,
+.h4 {
+  @include font(14, b, 22px);
+  text-transform: uppercase;
+}
+
+.page-subitle {
+  @include font(16, b, 26px);
+}
+
+/*
+h4-2 {
+  @include font5();
+  font-family: $openSans;
+  font-weight: $font_semibold;
+  color: $gray7;
+  text-transform: uppercase;
+}*/
+
+h5,
+.h5 {
+  @include font(12, b, 18px);
+  color: $gray6;
+  text-transform: uppercase;
+}
+
+h6,
+.h6 {
+  @include font(10, b, 14px);
+  text-transform: uppercase;
+}
+
+ol {
+  counter-reset: my-counter;
+
+  li {
+    counter-increment: my-counter;
+  }
+
+  li::before {
+    position: absolute;
+    left: 2px;
+    content: counter(my-counter);
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  th {
+    font-weight: bold;
+  }
+
+  td {
+    padding: 14px 15px;
+  }
+}

@@ -1,0 +1,17 @@
+//- mixin _pageTitle(blackText, blueText, desc, isAnimate, aditionalClass, delay)
+mixin _pageTitle(item)
+    .pageTitle(class= item.class
+        class= (item.color === 'white') ? 'pageTitle_white' : ''
+    class= (item.direction === 'reverse') ? 'pageTitle_reverse' : '')
+        h1.pageTitle__title
+            if (typeof (item.mainText) === 'string')
+                span= item.mainText
+            else
+                .pageTitle__titleFirstLine= item.mainText.firstLine
+                .pageTitle__titleSecondLine= item.mainText.secondLine
+        div.pageTitle__desc
+            if (typeof (item.desc) === 'string')
+                span= item.desc
+            else
+                .pageTitle__titleFirstLine= item.desc.firstLine
+                .pageTitle__titleSecondLine= item.desc.secondLine

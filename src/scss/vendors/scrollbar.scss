@@ -1,0 +1,78 @@
+.ps__rail-y,
+.ps__rail-x {
+  opacity: 1;
+}
+
+.ps:hover > .ps__rail-y,
+.ps:hover > .ps__rail-x {
+  opacity: 1;
+}
+
+.ps__rail-y {
+  width: 8px;
+  background-color: rgba(129, 166, 195, 0.6);
+}
+
+.ps__rail-y.ps--clicking .ps__thumb-y {
+  width: 8px;
+  background: #4a6c87;
+}
+
+.ps__thumb-y {
+  width: 8px;
+  background: #4a6c87;
+  border-radius: 20px;
+  right: 0;
+}
+
+.ps--active-y > .ps__rail-y {
+  background-color: rgba(129, 166, 195, 0.6);
+}
+
+.ps .ps__rail-y:hover {
+  width: 8px;
+  background-color: rgba(129, 166, 195, 0.6);
+
+  .ps__thumb-y {
+    width: 8px;
+    background: #4a6c87;
+  }
+}
+
+.container {
+  .ps__rail-y,
+  .ps__rail-x {
+    opacity: 0.6;
+  }
+
+  .ps__rail-y {
+    width: 4px;
+    background-color: rgba(129, 166, 195, 0.6);
+  }
+
+  .ps__rail-y.ps--clicking .ps__thumb-y {
+    width: 4px;
+    background: #4a6c87;
+  }
+
+  .ps__thumb-y {
+    width: 4px;
+    background: #4a6c87;
+    border-radius: 20px;
+    right: 0;
+  }
+
+  .ps--active-y > .ps__rail-y {
+    background-color: rgba(129, 166, 195, 0.6);
+  }
+
+  .ps .ps__rail-y:hover {
+    width: 8px;
+    background-color: rgba(129, 166, 195, 0.6);
+
+    .ps__thumb-y {
+      width: 8px;
+      background: #4a6c87;
+    }
+  }
+}

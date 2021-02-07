@@ -1,0 +1,55 @@
+.socials {
+  width: 100%;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.socials__wrap {
+  display: flex;
+  margin-top: 5px;
+}
+
+.socials__btn {
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+
+  .socials__icnRect {
+    transition: 0.2s ease-out;
+    fill: #f1f2f7;
+  }
+
+  &_fb {
+    &:hover {
+      .socials__icnRect {
+        fill: #3b5998;
+      }
+    }
+  }
+
+  &_twitter {
+    &:hover {
+      .socials__icnRect {
+        fill: #55acee;
+      }
+    }
+  }
+
+  &_inst {
+    &:hover {
+      .socials__icnRect {
+        fill: #6a453b;
+      }
+    }
+  }
+
+  &_pint {
+    &:hover {
+      .socials__icnRect {
+        fill: #cb2027;
+      }
+    }
+  }
+}

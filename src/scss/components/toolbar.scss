@@ -1,0 +1,49 @@
+.toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+
+  &__main,
+  &__aside {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: 17px;
+
+    img {
+      display: block;
+    }
+  }
+
+  &__aside &__item {
+    margin-right: 0;
+    margin-left: 22px;
+  }
+
+  &__aside &__flower {
+    margin-left: 42px;
+  }
+  &__aside &__flower_small-offset {
+    margin-left: 20px;
+  }
+
+  &__aside &__item_type-1 {
+    cursor: pointer;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__select {
+    width: 178px;
+    height: 30px;
+  }
+}

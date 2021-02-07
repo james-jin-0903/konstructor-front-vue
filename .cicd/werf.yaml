@@ -1,0 +1,7 @@
+
+
+configVersion: 1
+project: web-frontend
+---
+image: vue-nginx-frontend
+dockerfile: ./docker/Dockerfile

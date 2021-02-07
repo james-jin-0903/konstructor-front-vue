@@ -1,0 +1,51 @@
+.fadeOut {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  animation-name: fadeOut;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  99% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.fadeIn {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+}
+
+.fade-enter-active {
+  animation: fadeToggle 0.3s;
+}
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: linear;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}

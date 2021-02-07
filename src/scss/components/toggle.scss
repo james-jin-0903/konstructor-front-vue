@@ -1,0 +1,28 @@
+.toggle {
+  background: #444444;
+  border-radius: 20px;
+  border: none;
+  padding: 4px 0px 4px 10px;
+  height: 30px;
+  width: 50px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    background: url('../assets/images/icon_arrow-up.svg') no-repeat center;
+    width: 10px;
+    height: 15px;
+    right: 10px;
+    top: 3px;
+  }
+
+  &:after {
+    transform: rotate(180deg);
+    top: 12px;
+    transform-origin: center;
+  }
+}

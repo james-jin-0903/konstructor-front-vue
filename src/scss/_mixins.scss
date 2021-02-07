@@ -1,0 +1,46 @@
+@mixin box-shadow($y: 7px) {
+  box-shadow: 0 $y 5px -2px rgba(204, 204, 204, 0.25);
+}
+
+@mixin text-shadow() {
+  text-shadow: 1px 1px 10px rgba(black, 0.2);
+}
+
+@mixin spaceBotomBlock {
+  margin-bottom: $section_bottomSpacing_d;
+
+  @include media-t {
+    margin-bottom: $section_bottomSpacing_t;
+  }
+  @include media-m {
+    margin-bottom: $section_bottomSpacing_m;
+  }
+  @include media-sm {
+    margin-bottom: $section_bottomSpacing_sm;
+  }
+}
+
+@mixin font($sz: 16, $w: r, $lh: 1.5, $tr: unset, $lsp: 0) {
+  font-family: $openSans;
+  @if $w == r {
+    font-weight: $font_regular;
+  }
+  @if $w == l {
+    font-weight: $font_light;
+  }
+  @if $w == b {
+    font-weight: $font_bold;
+  }
+  @if $w == s {
+    font-weight: $font_semibold;
+  }
+
+  font-size: $sz + px;
+  line-height: $lh;
+  @if $tr {
+    text-transform: $tr;
+  }
+  @if $lsp {
+    letter-spacing: $lsp + px;
+  }
+}

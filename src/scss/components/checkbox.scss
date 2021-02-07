@@ -1,0 +1,86 @@
+.checkbox-wrapper {
+  [type="checkbox"]:not(:checked),
+  [type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+  }
+
+  [type="checkbox"]:not(:checked) + label,
+  [type="checkbox"]:checked + label,
+  [type="checkbox"]:not(:checked) + &__icon,
+  [type="checkbox"]:checked + &__icon {
+    position: relative;
+    padding-left: 1.5em;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  [type="checkbox"]:not(:checked) + label:before,
+  [type="checkbox"]:checked + label:before,
+  [type="checkbox"]:not(:checked) + &__icon:before,
+  [type="checkbox"]:checked + &__icon:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 14px;
+    height: 14px;
+    transition: background 0.3s;
+    border: 2px solid #81a6c3;
+    border-radius: 3px;
+  }
+
+  /* checked mark aspect */
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:checked + label:after,
+  [type="checkbox"]:not(:checked) + &__icon:after,
+  [type="checkbox"]:checked + &__icon:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    transition: all 0.2s;
+    background: white url("../assets/images/icon_check-blue.svg") no-repeat;
+    background-size: 12px 7px;
+    background-position: center;
+    border: 1px solid #4a6c87;
+  }
+
+  /* checked mark aspect changes */
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:not(:checked) + &__icon:after {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  [type="checkbox"]:checked + label:after,
+  [type="checkbox"]:checked + &__icon:after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* disabled checkbox */
+  [type="checkbox"]:disabled + label:before,
+  [type="checkbox"]:disabled + label:after,
+  [type="checkbox"]:disabled + &__icon:before,
+  [type="checkbox"]:disabled + &__icon:after {
+    background-color: #f1f2f7;
+    border: 1px solid #b2bcca;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+
+  [type="checkbox"]:disabled + label:after,
+  [type="checkbox"]:disabled + &__icon:after {
+    opacity: 0.5;
+  }
+
+  [type="checkbox"]:disabled + label,
+  [type="checkbox"]:disabled + &__icon {
+    cursor: default;
+  }
+}

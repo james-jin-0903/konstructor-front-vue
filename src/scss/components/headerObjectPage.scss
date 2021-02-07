@@ -1,0 +1,43 @@
+.header-object-page {
+  color: $gray3;
+  @include font(12, r, 16px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__creation-date {
+    margin-right: 10px;
+  }
+
+  &__info {
+    margin-right: 10px;
+  }
+
+  &__actions {
+    display: flex;
+  }
+  &__action {
+    display: flex;
+    align-items: center;
+    color: $gray7;
+    margin-right: 10px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    img {
+      margin-right: 5px;
+    }
+  }
+}

@@ -1,0 +1,167 @@
+.detail-page {
+  &__toolbar {
+    margin-top: 30px;
+  }
+  &__toolbar-item {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: $gray2;
+    }
+  }
+  &__header {
+    margin-top: 40px;
+  }
+  &__inner {
+    padding-top: 47px;
+  }
+  &__main-info {
+    display: flex;
+    margin-bottom: 40px;
+  }
+  &__main-info-left {
+    flex-grow: 1;
+    max-width: 800px;
+    margin-right: 20px;
+  }
+  &__main-info-right {
+  }
+  &__stats-actions {
+    width: 314px;
+    button {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  &__stats-list {
+    margin-bottom: 60px;
+  }
+  &__stats-list-item {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 17px;
+
+    .stats-name {
+      min-width: 100px;
+      color: $gray3;
+    }
+    .stats-value {
+      &_discount {
+        &:after {
+          content: attr(data-discount);
+          color: $gray3;
+          @include font(14, r, 19px);
+          margin-left: 10px;
+          text-decoration: line-through;
+        }
+      }
+
+      &_extra-info {
+        &:after {
+          content: attr(data-extra-info);
+          color: $gray3;
+          @include font(14, r, 19px);
+          margin-left: 10px;
+        }
+      }
+
+      &_big {
+        @include font(24, b, 33px);
+      }
+    }
+  }
+  &__main-image {
+    margin-bottom: 10px;
+    img {
+      border-radius: 3px;
+    }
+  }
+  &__other-media-list {
+    display: flex;
+    margin-bottom: 46px;
+  }
+  &__other-media-item {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  &__description-text {
+    @include font(20, r, 34px);
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  &__milestones {
+    margin-bottom: 60px;
+  }
+  &__milestones-header {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+    .title {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+
+      span {
+        color: $blue1;
+        @include font(16, b, 22px);
+        margin-right: 10px;
+      }
+    }
+
+    .milestones-counter {
+      color: $gray3;
+      @include font(16, r, 22px);
+      margin-right: 40px;
+    }
+
+    .action {
+      color: $blue1;
+      font-weight: 600;
+      cursor: pointer;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+  }
+  &__milestones-table {
+  }
+  &__tags {
+    margin-bottom: 40px;
+  }
+  &__similar-services {
+    margin-bottom: 60px;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+  &__title-2 {
+    @include font(16, b, 22px);
+  }
+  &__expand-toggler {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      margin-right: 10px;
+      @include font(14, s, 19px);
+      color: $blue1;
+    }
+
+    &.down {
+      img {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+}

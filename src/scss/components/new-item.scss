@@ -1,0 +1,84 @@
+.new-item {
+	width: 40%;
+
+	&__heading {
+		color: #444444;
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 15px;
+	}
+
+	&__steps {
+		font-weight: 400;
+		color: #b2bcca;
+		font-size: 14px;
+		margin-left: 5px;
+	}
+
+	&__title {
+		color: #888888;
+		font-size: 16px;
+	}
+
+	&__caption {
+		font-size: 12px;
+		color: #b2bcca;
+	}
+
+	&__input {
+		width: 100%;
+		margin-top: 10px;
+		margin-bottom: 25px;
+		padding: 7px 9px;
+		border: 1px solid $gray2;
+		border-radius: 3px;
+		color: $gray6 !important;
+	}
+
+	&__btn {
+		box-shadow: none;
+		outline: none;
+		background: $gradient1;
+		border: none;
+		padding: 0.6rem 2rem;
+		border-radius: 30px;
+		color: #fff;
+		font-size: 16px;
+		cursor: pointer;
+		&_disabled {
+			box-shadow: none;
+			outline: none;
+			border: none;
+			font-size: 16px;
+			padding: 0.6rem 2rem;
+			border-radius: 30px;
+			background: #f1f2f7;
+			color: #b2bcca;
+			cursor: not-allowed;
+		}
+		&_next {
+			box-shadow: none;
+			outline: none;
+			background: $gradient2;
+			border: none;
+			padding: 0.6rem 2rem;
+			border-radius: 30px;
+			color: #fff;
+			font-size: 16px;
+			cursor: pointer;
+		}
+	}
+
+	&__prev-btn {
+		box-shadow: none;
+		outline: none;
+		background: transparent;
+		border: 1px solid #444444;
+		padding: 0.6rem 2rem;
+		border-radius: 30px;
+		color: #444444;
+		margin-right: 10px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+}

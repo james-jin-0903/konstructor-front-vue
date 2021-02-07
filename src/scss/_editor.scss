@@ -1,0 +1,876 @@
+@mixin editorInput() {
+  box-shadow: none;
+  font-family: $openSans;
+  background: #ffffff;
+  border: 1px solid #dfe4eb;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 5px 4px 5px 9px;
+  color: #444444;
+  min-height: 36px !important;
+  &::placeholder {
+    color: #b2bcca;
+  }
+}
+
+@mixin editorTextarea() {
+  @include editorInput();
+  resize: none;
+  font-size: 14px;
+  line-height: 22px;
+  max-height: 300px;
+}
+
+#codex-editor {
+  border: 1px solid #dfe4eb;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.codex-editor {
+  margin-top: 54px;
+
+  .ce-header {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .cdx-list {
+    font-size: 20px;
+    line-height: 32px;
+    padding-left: 53px;
+    color: #444444;
+    margin-top: 17px;
+    margin-bottom: 4px;
+
+    .cdx-list__item {
+      padding: 3px 0 3px 3px;
+      line-height: 1.3em;
+      list-style: none;
+      position: relative;
+      padding-left: 20px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 9px;
+        width: 9px;
+        background: #444444;
+        border-radius: 50%;
+        left: -1px;
+        top: 12px;
+      }
+    }
+  }
+
+  .ce-toolbar {
+    width: 100%;
+    z-index: 10;
+
+    .ce-toolbar__plus {
+      left: 10px !important;
+      background: url(../assets/images/icon_plus.svg) no-repeat center;
+
+      svg {
+        display: none;
+      }
+    }
+
+    .ce-toolbar__content {
+      max-width: none;
+    }
+
+    .ce-toolbar__actions {
+      right: 18px;
+      top: 11px;
+    }
+
+    .ce-toolbar__settings-btn {
+      background: url(../assets/images/icon_options.svg) no-repeat center;
+
+      svg {
+        display: none;
+      }
+    }
+  }
+
+  .ce-block--selected .ce-block__content {
+    background: transparent;
+  }
+
+  .ce-block__content {
+    max-width: none;
+  }
+
+  .ce-settings--opened {
+    display: block;
+    border: 1px solid #81a6c3;
+    box-sizing: border-box;
+    border-radius: 3px;
+    transform: none !important;
+    background: white;
+    min-width: 180px;
+  }
+
+  .ce-block {
+    padding-right: 45px;
+  }
+
+  /* SETTINGS */
+  .ce-settings {
+    &[data-type="paragraph"] .ce-tune-convert-to-paragraph {
+      display: none !important;
+    }
+
+    &[data-type="header"] .ce-tune-convert-to-header {
+      display: none !important;
+    }
+
+    &[data-type="list"] .ce-tune-convert-to-list {
+      display: none !important;
+    }
+
+    &[data-type="quote"] .ce-tune-convert-to-quote {
+      display: none !important;
+    }
+
+    .ce-settings__button,
+    .ce-settings__plugin-zone > div,
+    .ce-settings__plugin-zone,
+    .ce-settings__default-zone {
+      white-space: nowrap;
+      padding: 0;
+      display: block;
+    }
+
+    .ce-settings__plugin-zone > div.cdx-quote-settings {
+      display: none;
+    }
+
+    .ce-settings__button {
+      width: auto;
+      height: auto;
+    }
+
+    .cdx-list-settings .cdx-settings-button,
+    .cdx-settings-button,
+    .ce-settings__button {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
+      height: auto;
+      padding: 4px 9px !important;
+      border-radius: 0;
+
+      &[data-tune="withBorder"],
+      &[data-tune="stretched"] {
+        display: none;
+      }
+
+      svg {
+        display: none;
+      }
+
+      &:after {
+        font-size: 14px;
+        line-height: 19px;
+        color: #444444;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+      }
+
+      &[data-tune="withBackground"] {
+        &:after {
+          content: "Поместить в блок";
+        }
+
+        &:before {
+          background: url(../assets/images/icon_block.svg) no-repeat center;
+        }
+      }
+
+      &[data-tune="withBackground"].cdx-settings-button--active {
+        &:after {
+          content: "Убрать из блока";
+        }
+
+        &:before {
+          background: url(../assets/images/icon_cube.svg) no-repeat center;
+        }
+      }
+    }
+
+    .cdx-list-settings .cdx-settings-button:first-child {
+      &:after {
+        content: "Переключить на список";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_list.svg) no-repeat center;
+      }
+    }
+
+    .cdx-list-settings .cdx-settings-button:last-child {
+      &:after {
+        content: "Переключить на нумерацию";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_num-list.svg) no-repeat center;
+      }
+    }
+
+    .cdx-list-settings .cdx-settings-button.cdx-settings-button--active {
+      display: none;
+    }
+
+    .ce-tune-move-up {
+      &:after {
+        content: "Переместить вверх";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_arrow-up.svg) no-repeat center;
+      }
+    }
+
+    .ce-tune-move-down {
+      &:after {
+        content: "Переместить вниз";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_arrow-down.svg) no-repeat center;
+      }
+    }
+
+    .ce-tune-convert-to-quote {
+      &:after {
+        content: "Превратить в цитату";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_quote.svg) no-repeat center;
+      }
+    }
+
+    .ce-tune-convert-to-list {
+      &:after {
+        content: "Превратить в список";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_list.svg) no-repeat center;
+      }
+    }
+
+    .ce-tune-convert-to-paragraph {
+      &:after {
+        content: "Превратить в текст";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_text.svg) no-repeat center;
+      }
+    }
+
+    .ce-tune-convert-to-header {
+      &:after {
+        content: "Превратить в заголовок";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_header.svg) no-repeat center;
+      }
+    }
+
+    .ce-settings__button--delete {
+      &:after {
+        content: "Удалить";
+      }
+
+      &:before {
+        background: url(../assets/images/editor/icon_close.svg) no-repeat center;
+      }
+    }
+
+    .ce-settings__button--confirm:after {
+      color: white;
+    }
+  }
+
+  /* TOOLBOX */
+  .ce-toolbox {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #81a6c3;
+    box-sizing: border-box;
+    border-radius: 3px;
+    transform: none !important;
+    background: white;
+
+    left: 27px;
+    top: 20px;
+    width: 188px;
+
+    .ce-toolbox__button--active {
+      animation: none !important;
+    }
+
+    .ce-toolbox__button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
+      height: auto;
+      padding: 4px 9px;
+
+      &:hover {
+        background: #f1f2f7;
+      }
+
+      svg {
+        display: none;
+      }
+
+      &[data-tool] {
+        &:after {
+          font-size: 14px;
+          line-height: 19px;
+          color: #444444;
+        }
+
+        &:before {
+          content: "";
+          display: block;
+          width: 16px;
+          height: 16px;
+          margin-right: 10px;
+        }
+      }
+
+      &[data-tool="paragraph"] {
+        order: 1;
+
+        &:after {
+          content: "Текст";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_text.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="header"] {
+        order: 2;
+
+        &:after {
+          content: "Заголовок";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_header.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="image"] {
+        order: 3;
+
+        &:after {
+          content: "Изображение/видео";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_image.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="list"] {
+        order: 4;
+
+        &:after {
+          content: "Список";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_list.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="linkTool"] {
+        order: 5;
+
+        &:after {
+          content: "Ссылка";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_link.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="quote"] {
+        order: 7;
+
+        &:after {
+          content: "Цитата";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_quote.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="code"] {
+        order: 6;
+
+        &:after {
+          content: "Код";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_code.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="delimiter"] {
+        order: 8;
+
+        &:after {
+          content: "Разделитель";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_divider.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="table"] {
+        order: 9;
+
+        &:after {
+          content: "Таблица";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_table.svg) no-repeat center;
+        }
+      }
+
+      &[data-tool="link"] {
+        order: 5;
+
+        &:after {
+          content: "Ссылка";
+        }
+
+        &:before {
+          background: url(../assets/images/editor/icon_link.svg) no-repeat center;
+        }
+      }
+    }
+  }
+
+  /* TOOLBOX END */
+
+  /* INLINE TOOLBAR */
+  .ce-inline-toolbar {
+    box-shadow: none;
+    background: #ffffff;
+    border: 1px solid #81a6c3;
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    .ce-inline-toolbar__dropdown {
+      display: none;
+    }
+
+    .ce-inline-toolbar__buttons,
+    .ce-inline-tool {
+      display: block;
+    }
+
+    .ce-inline-toolbar__buttons {
+      padding: 0;
+    }
+
+    .ce-inline-tool {
+      width: 100%;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+
+      color: #444444;
+      padding: 4px 11px 7px !important;
+      height: auto;
+
+      &:last-child {
+        padding-bottom: 4px !important;
+      }
+
+      svg {
+        display: block;
+        width: 12px;
+        margin-right: 11px;
+        height: 16px;
+        position: relative;
+
+        use,
+        path {
+          display: none;
+        }
+      }
+    }
+
+    .ce-inline-tool--active {
+      &:before {
+        display: block;
+        content: "";
+        height: 90%;
+        position: absolute;
+        left: 17px;
+        top: 2%;
+        width: 1px;
+        background: #b2bcca;
+        transform: rotate(45deg);
+      }
+    }
+
+    .ce-inline-tool--bold {
+      &:after {
+        content: "Применить жирное начертание";
+      }
+
+      &.ce-inline-tool--active:after {
+        content: "Отменить жирное начертание";
+      }
+
+      svg {
+        height: 16px;
+        background: url(../assets/images/editor/icon_bold.svg) no-repeat center;
+      }
+    }
+
+    .ce-inline-tool--italic {
+      &:after {
+        content: "Применить курсив";
+      }
+
+      &.ce-inline-tool--active:after {
+        content: "Отменить курсив";
+      }
+
+      svg {
+        height: 16px;
+        background: url(../assets/images/editor/icon_italic.svg) no-repeat center;
+      }
+    }
+
+    .ce-inline-tool--link {
+      &:after {
+        content: "Оформить в виде ссылки";
+      }
+
+      &.ce-inline-tool--active:after {
+        content: "Убрать ссылку";
+      }
+
+      .icon--unlink {
+        display: none;
+      }
+
+      svg {
+        width: 16px;
+        margin-right: 9px;
+        height: 16px;
+        background: url(../assets/images/editor/icon_link.svg) no-repeat center;
+      }
+    }
+
+    .ce-inline-tool[data-tool="inlineCode"] {
+      display: none;
+    }
+
+    .ce-inline-tool[data-tool="marker"] {
+      &:after {
+        content: "Выделить маркером";
+      }
+
+      &.ce-inline-tool--active:after {
+        content: "Убрать выделение маркером";
+      }
+
+      svg {
+        height: 16px;
+        width: 16px;
+        margin-right: 9px;
+        background: url(../assets/images/editor/icon_marker.svg) no-repeat center;
+      }
+    }
+  }
+
+  /* INLINE TOOLBAR END */
+
+  .cdx-marker {
+    background: rgba(246, 174, 50, 0.3);
+  }
+
+  .cdx-block {
+    &::-moz-selection {
+      /* Code for Firefox */
+      background: #45a0e8;
+    }
+
+    &::selection {
+      background: #45a0e8;
+    }
+  }
+
+  .codex-editor__redactor {
+    padding-left: 46px;
+  }
+
+  /* === CONTENT BLOCKS === */
+  /* TEXT */
+  .ce-paragraph {
+    font-size: 20px;
+    line-height: 32px;
+    color: #444444;
+
+    a {
+      @include link();
+
+      &:hover {
+        color: #81a6c3;
+        text-decoration: none;
+      }
+    }
+  }
+
+  /* HEADER */
+  .ce-header {
+    font-size: 24px;
+    line-height: 38px;
+    color: #444444;
+    margin-bottom: 7px;
+  }
+
+  /* LIST */
+  .cdx-list {
+    font-size: 20px;
+    line-height: 32px;
+    color: #444444;
+  }
+
+  /* HR */
+  .ce-delimiter {
+    margin-top: 9px;
+    margin-bottom: 13px;
+
+    &:before {
+      content: "•••";
+      font-family: Arial, sans-serif;
+      height: 30px;
+      letter-spacing: 0.5em;
+      font-size: 35px;
+      line-height: 57px;
+      margin-left: 18px;
+      margin-top: -11px;
+    }
+  }
+
+  /* TABLE */
+  .tc-table__inp {
+    min-height: 1em;
+  }
+
+  .tc-toolbar {
+    background: #81a6c3;
+  }
+
+  .tc-toolbar__plus {
+    border-radius: 50%;
+    background: #ffffff url(../assets/images/icon_plus.svg) no-repeat center;
+
+    width: 21px;
+    height: 24px;
+    border: 1px solid #81a6c3;
+    box-sizing: border-box;
+    background-size: 60%;
+
+    svg {
+      display: none;
+    }
+  }
+
+  .tc-toolbar__plus--hor.tc-toolbar__plus {
+    width: 21px;
+    height: 21px;
+  }
+
+  .tc-toolbar--hor:hover:after {
+    @include tip();
+    content: "Добавить строку";
+    font-family: inherit;
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+
+  .tc-toolbar--ver:hover:after {
+    @include tip();
+    content: "Добавить колонку";
+    font-family: inherit;
+    top: -30px;
+    margin-left: 40px;
+  }
+
+  .tc-toolbar__plus--ver {
+    margin-top: -10px;
+  }
+
+  .tc-table__remove-container--col {
+    .tc-table__minus-button:hover:after {
+      @include tip();
+      content: "Удалить колонку";
+      font-family: inherit;
+    }
+  }
+
+  .tc-table__remove-container--row {
+    .tc-table__minus-button:hover:after {
+      @include tip();
+      content: "Удалить строку";
+      font-family: inherit;
+    }
+  }
+
+  .tc-table__remove-container--col {
+    height: 20px;
+    top: -20px;
+  }
+
+  .tc-table__remove-container--row {
+    width: 20px;
+    left: -20px;
+  }
+
+  /* IMAGE */
+  .cdx-button {
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    border: none;
+    height: auto;
+    width: auto;
+    box-shadow: none;
+    border-radius: 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      background: none;
+    }
+
+    &:before {
+      content: "";
+      width: 30px;
+      height: 30px;
+
+      background: #ffffff;
+      border: 1px solid #dfe4eb;
+      box-sizing: border-box;
+      border-radius: 3px;
+      background: url(../assets/images/icon_plus.svg) no-repeat center;
+      margin-right: 9px;
+    }
+
+    &:after {
+      content: "Выберите изображение";
+      font-size: 14px;
+      line-height: 19px;
+
+      color: #666666;
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  &--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before {
+    content: "Введите текст своей идеи или нажмите плюс для добавления нового блока";
+    font-size: 20px;
+    line-height: 32px;
+    color: #b2bcca;
+  }
+
+  &--narrow .codex-editor__redactor {
+    padding-top: 60px;
+  }
+
+  .ct {
+    display: none !important;
+  }
+
+  .link-tool {
+    margin-bottom: 15px;
+
+    .link-tool__input[contentEditable="true"][data-placeholder]::before {
+      content: "Вставьте ссылку на страницу на Konstruktor или на другом ресурсе";
+      font-size: 16px;
+      line-height: 22px;
+      color: #b2bcca;
+    }
+
+    .link-tool__input {
+      box-shadow: none;
+      background-image: url(../assets/images/editor/icon_link.svg);
+      height: 36px;
+      padding-top: 6px;
+      padding-left: 33px;
+      background-position: 7px;
+    }
+  }
+
+  .codex-editor__redactor {
+    padding-bottom: 47px !important;
+  }
+
+  .ce-code .ce-code__textarea,
+  .cdx-quote .cdx-quote__text {
+    @include editorTextarea();
+  }
+
+  .ce-code .ce-code__textarea {
+    height: 36px;
+  }
+
+  .cdx-quote .cdx-quote__text {
+    font-size: 16px;
+  }
+
+  .cdx-quote {
+    .cdx-quote__caption {
+      @include editorInput();
+      font-size: 16px;
+      padding-top: 8px;
+    }
+  }
+}
+
+.cdx-notifies {
+  display: none !important;
+}

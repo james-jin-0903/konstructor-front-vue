@@ -1,0 +1,94 @@
+.upload-img {
+  display: flex;
+  align-items: center;
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 0 0 1px $gray2 inset;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      background: url("../assets/images/rate_track.svg");
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      .upload-img__img {
+        opacity: 1;
+      }
+    }
+
+    &_filled {
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        background: rgba(24, 23, 32, 0);
+        transition: 0.2s linear;
+        background-position: center;
+      }
+
+      &:hover {
+        &::before {
+          background-color: rgba(24, 23, 32, 0.75);
+          background-image: url("../assets/images/icon_x.svg");
+        }
+      }
+
+      .upload-img__img {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__img-box {
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+  }
+
+  &__img {
+    max-height: 100%;
+    transition: 0.3s;
+    opacity: 0.7;
+  }
+
+  &__name {
+    margin: 0 10px;
+  }
+
+  &_style-1 & {
+    &__label {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

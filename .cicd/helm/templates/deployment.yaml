@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.webFrontendService.name }}-deployment"
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    service: "{{ .Values.webFrontendService.name }}"
+spec:
+  selector:
+    matchLabels:
+      service: "{{ .Values.webFrontendService.name }}"
+  template:
+    metadata:
+      labels:
+        service: "{{ .Values.webFrontendService.name }}"
+    spec:
+      imagePullSecrets:
+        - name: "{{ .Values.webFrontendService.name }}-registry-secret"
+#      nodeSelector:
+      containers:
+      - name: nginx-vue-{{ .Values.global.env }}
+        ports:
+          - containerPort: {{ .Values.webFrontendService.port }}
+{{ tuple "vue-nginx-frontend" . | werf_container_image | indent 8 }}
+        env:
+          - name: APP_ENV
+            value: {{ .Values.global.env }}
+{{ tuple "vue-nginx-frontend" . | werf_container_env | indent 8 }}

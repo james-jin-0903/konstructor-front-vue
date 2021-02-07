@@ -1,0 +1,92 @@
+.data-table {
+	display: flex;
+	width: 1250px;
+	margin-left: -1.5rem;
+	&__container {
+		width: 100% !important;
+		margin: 0 auto;
+	}
+
+	&__second-container {
+		width: 100% !important;
+	}
+
+	&__table-heading {
+		font-size: 16px;
+		text-align: left;
+		padding: 15px 0 35px 15px;
+		text-transform: uppercase;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__table-text {
+		text-align: left;
+		padding: 0 0 2rem 15px;
+		white-space: nowrap;
+	}
+
+	&__table-amount {
+		color: #444444;
+	}
+
+	&__heading-arrow {
+		margin-left: 2rem;
+	}
+
+	&__table-group-user,
+	&__table-community-user,
+	&__table-user,
+	&__table-initiater {
+		display: flex;
+		align-items: center;
+		span {
+			margin-left: 10px;
+		}
+	}
+
+	&__avatar {
+		display: flex !important;
+	}
+
+	&__btn {
+		position: relative;
+		border: 1px solid #444444;
+		width: 140px !important;
+		height: 35px;
+		border-radius: 50px;
+		color: #444444;
+		background: transparent;
+		z-index: 1;
+		transition: all 0.4s cubic-bezier(1, 0.25, 0, 0.75) 0s;
+
+		&:hover {
+			cursor: pointer;
+			color: #fff;
+			border: 0;
+			transition: all 0.4s cubic-bezier(1, 0.25, 0, 0.75) 0s;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			background-image: $gradient1;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			transition: all 0.4s cubic-bezier(1, 0.25, 0, 0.75) 0s;
+			z-index: -1;
+			opacity: 0;
+			border-radius: 50px;
+		}
+
+		&:hover:before {
+			opacity: 1;
+		}
+	}
+	&__table-object {
+		color: #81a6c3;
+	}
+}
